@@ -2,21 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47cc4c2a-2b98-4761-b7a5-85ba492a080e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/JournalSubmission/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JournalSubmission/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PaperSubmissionSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PaperSubmissionSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JournalSubmission/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/templates/users/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaperSubmissionSystem/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/PaperSubmissionSystem/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PaperSubmissionSystem/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PaperSubmissionSystem/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -33,30 +50,31 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="2" />
-          <entry key="py" value="4" />
+          <entry key="html" value="7" />
+          <entry key="py" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="2" />
-          <entry key="Python" value="4" />
+          <entry key="HTML" value="7" />
+          <entry key="Python" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Django Console" value="19" />
-          <entry key="html" value="91" />
-          <entry key="py" value="302" />
-          <entry key="py@PaperSubmissionSystem" value="131" />
+          <entry key="html" value="382" />
+          <entry key="py" value="899" />
+          <entry key="py@PaperSubmissionSystem" value="167" />
+          <entry key="txt" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CommandLine" value="80" />
-          <entry key="HTML" value="91" />
-          <entry key="PLAIN_TEXT" value="51" />
-          <entry key="Python" value="321" />
+          <entry key="CommandLine" value="116" />
+          <entry key="HTML" value="382" />
+          <entry key="PLAIN_TEXT" value="90" />
+          <entry key="Python" value="918" />
         </counts>
       </usages-collector>
     </session>
@@ -70,16 +88,28 @@
         <entry file="file://$PROJECT_DIR$/PaperSubmissionSystem/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+              <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/home.html">
+        <entry file="file://$PROJECT_DIR$/PaperSubmissionSystem/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="39" selection-start-column="39" selection-end-column="39" />
+            <state relative-caret-position="357">
+              <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+              <folding>
+                <element signature="e#645#677#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/users/templates/users/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -94,58 +124,56 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PaperSubmissionSystem/urls.py">
+        <entry file="file://$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-              <folding>
-                <element signature="e#645#677#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-              <folding>
-                <element signature="e#84#93#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JournalSubmission/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <marker date="1583192815305" expanded="true" signature="123:128" ph="..." />
-              </folding>
+            <state>
+              <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/base.html">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+            <state relative-caret-position="272">
+              <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JournalSubmission/urls.py">
+        <entry file="file://$PROJECT_DIR$/users/templates/users/login.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/users/apps.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/users/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/users/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="64" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -167,12 +195,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/PaperSubmissionSystem/urls.py" />
         <option value="$PROJECT_DIR$/JournalSubmission/urls.py" />
-        <option value="$PROJECT_DIR$/PaperSubmissionSystem/settings.py" />
         <option value="$PROJECT_DIR$/JournalSubmission/views.py" />
-        <option value="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/home.html" />
         <option value="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/base.html" />
+        <option value="$PROJECT_DIR$/JournalSubmission/models.py" />
+        <option value="$PROJECT_DIR$/JournalSubmission/admin.py" />
+        <option value="$PROJECT_DIR$/PaperSubmissionSystem/urls.py" />
+        <option value="$PROJECT_DIR$/users/views.py" />
+        <option value="$PROJECT_DIR$/users/forms.py" />
+        <option value="$PROJECT_DIR$/PaperSubmissionSystem/settings.py" />
+        <option value="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/home.html" />
+        <option value="$PROJECT_DIR$/users/templates/users/register.html" />
+        <option value="$PROJECT_DIR$/users/templates/users/login.html" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
       </list>
     </option>
   </component>
@@ -224,6 +259,35 @@
               <item name="PaperSubmissionSystem" type="462c0819:PsiDirectoryNode" />
               <item name="PaperSubmissionSystem" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PaperSubmissionSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaperSubmissionSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaperSubmissionSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaperSubmissionSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaperSubmissionSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaperSubmissionSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaperSubmissionSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaperSubmissionSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaperSubmissionSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaperSubmissionSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -239,7 +303,11 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\templates" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\users\templates\users" />
       <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\JournalSubmission\templates\JournalSubmission" />
     </key>
   </component>
@@ -292,12 +360,21 @@
       <option name="presentableId" value="Default" />
       <updated>1582953191518</updated>
     </task>
+    <task id="LOCAL-00001" summary="Created app and Bootstrap Nav Bar">
+      <created>1583209572153</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583209572153</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1914" y="-6" width="1933" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.25493333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919224" visible="true" weight="0.25493333" />
       <window_info id="Structure" order="1" sideWeight="0.50080776" side_tool="true" weight="0.25226668" />
       <window_info id="Favorites" order="2" sideWeight="0.50080776" side_tool="true" weight="0.25226668" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -309,16 +386,16 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002667" side_tool="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49973333" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="manage.py@PaperSubmissionSystem" order="13" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="manage.py@PaperSubmissionSystem" order="13" visible="true" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3296" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +404,54 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created app and Bootstrap Nav Bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created app and Bootstrap Nav Bar" />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/JournalSubmission/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JournalSubmission/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1583192815305" expanded="true" signature="123:128" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JournalSubmission/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1583212098738" expanded="true" signature="128:133" ph="..." />
+            <marker date="1583212098738" expanded="true" signature="128:180" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JournalSubmission/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -338,12 +462,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JournalSubmission/urls.py">
+    <entry file="file://$PROJECT_DIR$/PaperSubmissionSystem/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JournalSubmission/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        <state relative-caret-position="-24">
+          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/importlib/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/core/management/commands/runserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="116" column="12" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="64" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -355,45 +515,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/users/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/PaperSubmissionSystem/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PaperSubmissionSystem/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-          <folding>
-            <element signature="e#645#677#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JournalSubmission/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1583192815305" expanded="true" signature="123:128" ph="..." />
-          </folding>
+          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="39" selection-start-column="39" selection-end-column="39" />
+          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/base.html">
+    <entry file="file://$PROJECT_DIR$/users/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+        <state relative-caret-position="255">
+          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PaperSubmissionSystem/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+          <folding>
+            <element signature="e#645#677#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/templates/users/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/templates/users/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
         </state>
       </provider>
     </entry>
