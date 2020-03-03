@@ -7,4 +7,4 @@ def homePage(request):
     return render (request, 'JournalSubmission/home.html')
 
 def journalList(request):
-    return HttpResponse('<h1> Journals </h1>')
+    return render(request, 'JournalSubmission/journalList.html')
