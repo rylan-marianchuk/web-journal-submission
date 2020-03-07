@@ -9,5 +9,6 @@ class Journal(models.Model):
     # If an editor gets deleted, its journal will also be removed (on delete argument)
     editor = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
     def __str__(self):
         return self.title
