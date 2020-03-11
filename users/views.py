@@ -14,7 +14,13 @@ def register(request):
 
             #users = User.objects.all()
 
-            return render(request, 'users/login.html')
+            return redirect('profile')
     else:
         formObj = UserForm
         return render(request, "users/register.html", {'form': formObj})
+
+
+
+def profile(request):
+    return render(request, "users/profile.html")
+

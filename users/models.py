@@ -19,7 +19,8 @@ class User(models.Model):
     def __str__(self):
         return self.userName
 
-
+    def get_absolute_url(self):
+        return "/profile/%i/" % self.userName
 
 
 

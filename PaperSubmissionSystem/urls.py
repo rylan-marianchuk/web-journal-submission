@@ -20,5 +20,6 @@ from users import views as user_Views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_Views.register, name= 'register'),
+    path('profile/', user_Views.register, name= 'register'),
     path('', include('JournalSubmission.urls'))
 ]
