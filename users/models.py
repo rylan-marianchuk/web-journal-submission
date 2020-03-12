@@ -7,12 +7,12 @@ USER_TYPES = [('Author', 'Author'), ('Editor', 'Editor'), ('Reviewer', 'Reviewer
 class User(models.Model):
     name = models.CharField(max_length=100)
     userName = models.CharField(max_length=100)
-    emailAddress = models.CharField(max_length=100)
+    email_Address = models.CharField(max_length=100)
     instituition = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
     discipline = models.CharField(max_length=100)
     hasNotification = False
-    userType = models.CharField(max_length=100, choices=USER_TYPES)
+    user_Type = models.CharField(max_length=100, choices=USER_TYPES)
 
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserForm
+from .forms import UserForm, LoginForm
 from users.models import User
 
 def register(request):
@@ -24,3 +24,13 @@ def register(request):
 def profile(request):
     return render(request, "users/profile.html")
 
+def login(request):
+
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            return redirect('profile')
+
+    else:
+        formObj = LoginForm
+        return render(request, "users/login.html")

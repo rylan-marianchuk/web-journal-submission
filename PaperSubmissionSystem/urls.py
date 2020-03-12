@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_Views.register, name= 'register'),
     path('profile/', user_Views.register, name= 'register'),
+    path('login/', user_Views.login, name= 'login'),
     path('', include('JournalSubmission.urls'))
 ]

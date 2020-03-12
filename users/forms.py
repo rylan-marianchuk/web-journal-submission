@@ -6,15 +6,21 @@ from .models import User, USER_TYPES
 
 class UserForm(forms.ModelForm):
     name = forms.CharField(max_length=100)
-    userType = forms.CharField(max_length=100, widget=forms.Select(choices=USER_TYPES))
+    user_Type = forms.CharField(max_length=100, widget=forms.Select(choices=USER_TYPES))
     userName = forms.CharField(max_length=100)
-    emailAddress = forms.CharField(max_length=100)
+    email_Address = forms.CharField(max_length=100)
     password = forms.CharField(max_length=100)
     discipline = forms.CharField(max_length=100)
     instituition = forms.CharField(max_length=100)
 
     class Meta:
         model = User
-        fields = ['name', 'userName', 'emailAddress', 'instituition', 'password', 'discipline', 'userType']
+        fields = ['name', 'userName', 'email_Address', 'instituition', 'password', 'discipline', 'user_Type']
 
+class LoginForm(forms.ModelForm):
+    userName = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100)
 
+    class Meta:
+        model = User
+        fields = ['userName', 'password']
