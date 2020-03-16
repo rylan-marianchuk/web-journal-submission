@@ -1,36 +1,41 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib import messages
-from .forms import UserForm, LoginForm
-from users.models import User
+from .forms import CreateUserForm, ProfileDetailsForm
+from django.contrib.auth import authenticate, login, logout
 
-def register(request):
-
+def register_page(request):
     if request.method == 'POST':
-        form = UserForm(request.POST)
-        if form.is_valid():
-            newUser = form.save(commit=False)
-            newUser.user = request.user
-            newUser.save()
-
-            #users = User.objects.all()
-
-            return redirect('profile')
+        form = CreateUserForm(request.POST)
+        form_profile = ProfileDetailsForm(request.POST)
+        if form.is_valid() and form_profile.is_valid():
+            user = form.save()
+            profile = form_profile.save(commit=False)
+            profile.user = user
+            profile.save()
+            #messages.success(request, 'success')
+            return redirect('login')
     else:
-        formObj = UserForm
-        return render(request, "users/register.html", {'form': formObj})
+        form = CreateUserForm()
+        form_profile = ProfileDetailsForm()
+    context = {'form': form, 'form_profile': form_profile}
+    return render(request, 'users/register.html', context)
 
-
-
-def profile(request):
-    return render(request, "users/profile.html")
-
-def login(request):
-
+def login_page(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
             return redirect('profile')
+        else:
+            messages.info(request, 'Username or Password is incorrect')
+    context = {}
+    return render(request, 'users/login.html', context)
 
-    else:
-        formObj = LoginForm
-        return render(request, "users/login.html")
+
+def profile_page(request):
+    context = {}
+    return render(request, "users/profile.html", context)
+

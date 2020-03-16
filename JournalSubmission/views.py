@@ -8,3 +8,4 @@ def homePage(request):
 
 def journalList(request):
     return render(request, 'JournalSubmission/journalList.html')
+

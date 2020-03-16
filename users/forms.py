@@ -1,21 +1,27 @@
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django import forms
-from .models import User, USER_TYPES
+#from django.contrib.auth.models import forms
+from .models import Profile
+from django.db import models
 
 
+USER_TYPES = [('author', 'Author'), ('editor', 'Editor'), ('reviewer', 'Reviewer')]
 
 
-class UserForm(forms.ModelForm):
-    name = forms.CharField(max_length=100)
-    user_Type = forms.CharField(max_length=100, widget=forms.Select(choices=USER_TYPES))
-    userName = forms.CharField(max_length=100)
-    email_Address = forms.CharField(max_length=100)
-    password = forms.CharField(max_length=100)
-    discipline = forms.CharField(max_length=100)
-    instituition = forms.CharField(max_length=100)
-
+class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['name', 'userName', 'email_Address', 'instituition', 'password', 'discipline', 'user_Type']
+        fields = ['username', 'email', 'password1', 'password2']
+
+
+class ProfileDetailsForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['institute', 'discipline', 'role']
+
+
 
 class LoginForm(forms.ModelForm):
     userName = forms.CharField(max_length=100)
