@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="47cc4c2a-2b98-4761-b7a5-85ba492a080e" name="Default Changelist" comment="Skeleton Registration Form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaperSubmissionSystem/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PaperSubmissionSystem/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Alex" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,7 +74,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -188,11 +182,6 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="418" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1583548444682" />
-    <state x="752" y="329" width="584" height="393" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584169305432">
-      <screen x="0" y="0" width="3840" height="1050" />
-    </state>
-    <state x="663" y="329" width="584" height="393" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1584151875387" />
-    <state x="752" y="329" key="#com.intellij.fileTypes.FileTypeChooser/0.0.3840.1050@0.0.3840.1050" timestamp="1584169305432" />
     <state x="693" y="273" width="524" height="505" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583547794128">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -201,11 +190,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="542" y="64" width="826" height="924" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1583554558278" />
-    <state x="780" y="203" width="424" height="486" key="FileChooserDialogImpl" timestamp="1584080434508">
-      <screen x="0" y="0" width="3840" height="1050" />
+    <state x="390" y="203" width="424" height="486" key="FileChooserDialogImpl" timestamp="1583288417184">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="390" y="203" width="424" height="486" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1583288417184" />
-    <state x="780" y="203" key="FileChooserDialogImpl/0.0.3840.1050@0.0.3840.1050" timestamp="1584080434508" />
     <state width="1897" height="275" key="GridCell.Tab.0.bottom" timestamp="1583548452548">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -222,21 +210,26 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1897" height="275" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1583548452547" />
-    <state x="2593" y="201" width="563" height="680" key="RollbackChangesDialog" timestamp="1584218563084">
-      <screen x="0" y="0" width="3840" height="1050" />
+    <state x="2586" y="257" width="578" height="568" key="MultipleFileMergeDialog" timestamp="1584333651324">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="1297" y="201" key="RollbackChangesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1584151606730" />
-    <state x="2593" y="201" width="563" height="680" key="RollbackChangesDialog/0.0.3840.1050@0.0.3840.1050" timestamp="1584218563084" />
-    <state x="1920" y="318" width="1920" height="732" key="SettingsEditor" timestamp="1584170514604">
-      <screen x="0" y="0" width="3840" height="1050" />
+    <state x="2586" y="257" width="578" height="568" key="MultipleFileMergeDialog/0.0.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584333651324" />
+    <state x="207" y="278" width="1037" height="732" key="SettingsEditor" timestamp="1583547191718">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="94" y="78" key="SettingsEditor/0.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1583434714409" />
-    <state x="669" y="204" width="1037" height="732" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1584060597489" />
-    <state x="1920" y="318" width="1920" height="732" key="SettingsEditor/0.0.3840.1050@0.0.3840.1050" timestamp="1584170514604" />
-    <state x="286" y="231" width="1344" height="678" key="search.everywhere.popup" timestamp="1584083268921">
-      <screen x="0" y="0" width="3840" height="1050" />
+    <state x="207" y="278" width="1037" height="732" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1583547191718" />
+    <state x="2475" y="276" width="800" height="530" key="Vcs.Push.Dialog.v2" timestamp="1584334366869">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2475" y="276" width="800" height="530" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584334366869" />
+    <state x="2601" y="202" width="547" height="678" key="git4idea.branch.GitSmartOperationDialog" timestamp="1584333639252">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2601" y="202" width="547" height="678" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584333639252" />
+    <state x="143" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1583288333367">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="143" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1583288333367" />
-    <state x="286" y="231" width="1344" height="678" key="search.everywhere.popup/0.0.3840.1050@0.0.3840.1050" timestamp="1584083268921" />
   </component>
 </project>

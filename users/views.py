@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import CreateUserForm, ProfileDetailsForm
 from django.contrib.auth import authenticate, login, logout
 
+'''Still few tweaks are required like error message handling, redirect, and so on'''
 def register_page(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
