@@ -24,11 +24,3 @@ class ProfileDetailsForm(ModelForm):
         fields = ['institute', 'discipline', 'role']
 
 
-
-class LoginForm(forms.ModelForm):
-    userName = forms.CharField(max_length=100)
-    password = forms.CharField(max_length=100)
-
-    class Meta:
-        model = User
-        fields = ['userName', 'password']
