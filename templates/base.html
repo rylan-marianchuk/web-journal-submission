@@ -30,12 +30,12 @@
       <li class="nav-item">
 	      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
       </li>
-
     </ul>
+       <span>Hello, {{request.user}}</span>
   </div>
 </nav>
 <body>
-  <span>Hello, {{request.user}}</span>
+
 {% block content %}{% endblock %}
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
