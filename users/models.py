@@ -13,3 +13,5 @@ class Profile(models.Model):
     discipline = models.CharField(max_length=100, blank=True)
     institute = models.CharField(max_length=100, blank=True)
 
+    def __str__(self):
+        return self.user.username
