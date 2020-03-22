@@ -15,7 +15,7 @@ def register_page(request):
             profile.user = user
             profile.save()
             #messages.success(request, 'success')
-            return redirect('login')
+            return redirect('profile')
     else:
         form = CreateUserForm()
         form_profile = ProfileDetailsForm()
@@ -30,7 +30,7 @@ def login_page(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('profile')
+            return redirect('journals')
         else:
             messages.info(request, 'Username or Password is incorrect')
             login_failed = True
