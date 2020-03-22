@@ -23,6 +23,7 @@ def register_page(request):
     return render(request, 'users/register.html', context)
 
 def login_page(request):
+    login_failed = False
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -32,7 +33,8 @@ def login_page(request):
             return redirect('profile')
         else:
             messages.info(request, 'Username or Password is incorrect')
-    context = {}
+            login_failed = True
+    context = { 'loginfailed': login_failed }
     return render(request, 'users/login.html', context)
 
 def logout_user(request):
