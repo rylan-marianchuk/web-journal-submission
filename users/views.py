@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
@@ -52,5 +53,11 @@ def logout_user(request):
     logout(request)
     return redirect('login')
 
+
+def displayProfile(request, pk):
+
+    user_db = Profile.objects.get(user=User.objects.get(pk=pk))
+    context = {"user": user_db}
+    return render(request, 'users/profile.html', context)
 
 

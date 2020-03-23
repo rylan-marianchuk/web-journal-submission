@@ -27,6 +27,7 @@ urlpatterns = [
     path('register/', user_Views.register_page, name= 'register'),
     path('login/', user_Views.login_page, name= 'login'),
     path('logout/', user_Views.logout_user, name= 'logout'),
+    path('profile/(?P<pk>)/$', user_Views.displayProfile, name= 'profile'),
 
     #Journal URLS
     path('submission/(?P<user>)/$', journal_Views.newSubmission, name= 'submission'),
