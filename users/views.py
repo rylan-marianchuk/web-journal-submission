@@ -18,7 +18,7 @@ def register_page(request):
             profile.user = user
             profile.save()
             #messages.success(request, 'success')
-            return redirect('login')
+            return redirect('profile')
     else:
         form = CreateUserForm()
         form_profile = ProfileDetailsForm()
@@ -28,6 +28,7 @@ def register_page(request):
 
 
 def login_page(request):
+    login_failed = False
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -41,7 +42,8 @@ def login_page(request):
             return render(request, 'users/profile.html', context)
         else:
             messages.info(request, 'Username or Password is incorrect')
-    context = {}
+            login_failed = True
+    context = { 'loginfailed': login_failed }
     return render(request, 'users/login.html', context)
 
 
