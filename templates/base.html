@@ -21,17 +21,27 @@
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'journals' %}">Journals</a>
       </li>
+        <li class="nav-item">
+	      <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+      </li>
+        {% if not user.is_authenticated %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'register' %}">Register</a>
       </li>
       <li class="nav-item">
 	      <a class="nav-link" href="{% url 'login' %}">Login</a>
       </li>
+        {% else %}
       <li class="nav-item">
 	      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
       </li>
+        {% endif %}
+
+
     </ul>
+      {% if user.is_authenticated %}
        <span>Hello, {{request.user}}</span>
+      {% endif %}
   </div>
 </nav>
 <body>
