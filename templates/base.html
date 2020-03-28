@@ -21,27 +21,28 @@
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'journals' %}">Journals</a>
       </li>
- 	
-	<!-- Display different buttons depending on if a user is logged in -->
-	{% if not user.is_authenticated %}
-      		<li class="nav-item">
-              		<a class="nav-link" href="{% url 'register' %}">Register</a>
-      		</li>
-      		<li class="nav-item">
-	      		<a class="nav-link" href="{% url 'login' %}">Login</a>
-      		</li>
-	{% else %}
-      		<li class="nav-item">
-	      		<a class="nav-link" href="{% url 'profile' user.pk %}">Profile</a>
-      		</li>
-      		<li class="nav-item">
-	      		<a class="nav-link" href="{% url 'logout' %}">Logout</a>
-      		</li>
+        <li class="nav-item">
+	      <a class="nav-link" href="{% url 'profile' user.pk %}">Profile</a>
+      </li>
+        {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+      <li class="nav-item">
+	      <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+        {% else %}
+      <li class="nav-item">
+	      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+        {% endif %}
 
-    		</ul>
-       			<span>Hello, {{request.user}}</span>
-  		</div>
-	{% endif %}
+
+    </ul>
+      {% if user.is_authenticated %}
+       <span>Hello, {{request.user}}</span>
+      {% endif %}
+  </div>
 </nav>
 <body>
 

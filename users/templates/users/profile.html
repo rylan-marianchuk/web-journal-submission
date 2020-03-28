@@ -163,15 +163,15 @@ menu p {
         <div class="name">
         </div>
         <div class="name">
-            {{user.user}}
+            {{profile.user}}
         </div>
 
         <div class="location" style="padding: 30px;">
-            {{ user.institute }}
+            {{ profile.institute }}
         </div>
 
         <div class="bio">
-            {{user.discipline}}
+            {{profile.discipline}}
         </div>
 
         <table class="table">
@@ -184,17 +184,17 @@ menu p {
           </thead>
           <tbody>
             <tr>
-              <td>{{ user.submissions_pending }}</td>
-              <td>{{ user.submissions_accpeted}}</td>
-              <td>{{ user.unique_journals }}</td>
+              <td>{{ profile.submissions_pending }}</td>
+              <td>{{ profile.submissions_accpeted}}</td>
+              <td>{{ profile.unique_journals }}</td>
             </tr>
           </tbody>
         </table>
 
-        {% if user.role == "author" %}
+        {% if profile.role == "author" %}
 
             <div class="buttons">
-            <a href="{% url 'submission' user %}" ><button class="message-me">New Submission</button></a>
+            <a href="{% url 'submission' profile %}" ><button class="message-me">New Submission</button></a>
             </div>
 
             <div class="location">
@@ -227,7 +227,7 @@ menu p {
             </table>
         {% endif %}
 
-        {% if user.role == "editor" %}
+        {% if profile.role == "editor" %}
             {% if hasJournal %}
                 <p>Great, you've made a journal</p>
             {% else %}

@@ -25,6 +25,7 @@ urlpatterns = [
 
     # User Authentication URLS
     path('register/', user_Views.register_page, name= 'register'),
+    #path('profile/', user_Views.displayProfile, name= 'profile'),
     path('login/', user_Views.login_page, name= 'login'),
     path('logout/', user_Views.logout_user, name= 'logout'),
     path('profile/(?P<pk>)/$', user_Views.displayProfile, name= 'profile'),
