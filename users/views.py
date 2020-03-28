@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from .decorators import user_unauthenticated
 from .query import *
 from django.contrib.auth.models import Group
+
 '''Still few tweaks are required like error message handling, redirect, and so on'''
 
 @user_unauthenticated
@@ -28,6 +29,7 @@ def register_page(request):
             #testing purposes 'print'
             print(user_data)
             #user automatically added to chosen role group in the backend
+
             if user_data == 'author':
                group = Group.objects.get(name='Author')
                user.groups.add(group)
@@ -37,6 +39,7 @@ def register_page(request):
             elif user_data == 'reviewer':
                 group = Group.objects.get(name='Reviewer')
                 user.groups.add(group)
+
             #messages.success(request, 'success')
             return redirect('login')
     else:
