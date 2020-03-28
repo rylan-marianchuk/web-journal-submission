@@ -1,20 +1,26 @@
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django import forms
-from .models import User, USER_TYPES
+from .models import Profile
 
 
 
+USER_TYPES = [('author', 'Author'), ('editor', 'Editor'), ('reviewer', 'Reviewer')]
 
-class UserForm(forms.ModelForm):
-    name = forms.CharField(max_length=100)
-    userType = forms.CharField(max_length=100, widget=forms.Select(choices=USER_TYPES))
-    userName = forms.CharField(max_length=100)
-    emailAddress = forms.CharField(max_length=100)
-    password = forms.CharField(max_length=100)
-    discipline = forms.CharField(max_length=100)
-    instituition = forms.CharField(max_length=100)
+'''By using a OneToOneField, one can indeed extend the user system, 
+but you can not simply use this to handle both models in the same Form,
+and thus construct two objects at once - Stackoverflow Answer'''
 
+class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['name', 'userName', 'emailAddress', 'instituition', 'password', 'discipline', 'userType']
+        fields = ['username', 'email', 'password1', 'password2']
+
+
+class ProfileDetailsForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['institute', 'discipline', 'role']
 
 

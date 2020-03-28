@@ -16,10 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users import views as user_Views
+from JournalSubmission import views as journal_Views
+
 
 urlpatterns = [
+    path('', journal_Views.homePage, name='home'),
     path('admin/', admin.site.urls),
-    path('register/', user_Views.register, name= 'register'),
-    path('profile/', user_Views.register, name= 'register'),
-    path('', include('JournalSubmission.urls'))
+
+    # User Authentication URLS
+    path('register/', user_Views.register_page, name= 'register'),
+    #path('profile/', user_Views.displayProfile, name= 'profile'),
+    path('login/', user_Views.login_page, name= 'login'),
+    path('logout/', user_Views.logout_user, name= 'logout'),
+    path('profile/(?P<pk>)/$', user_Views.displayProfile, name= 'profile'),
+
+    #Journal URLS
+    path('submission/(?P<user>)/$', journal_Views.newSubmission, name= 'submission'),
+    path('success_message/', journal_Views.successMessage, name='success_message'),
+    path('journals/', journal_Views.journalList, name='journals')
 ]
