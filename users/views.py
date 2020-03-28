@@ -4,9 +4,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse
 
+from JournalSubmission.models import Journal
+from JournalSubmission.forms import JournalForm
 from .forms import CreateUserForm, ProfileDetailsForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Profile
+
+from .query import *
 
 '''Still few tweaks are required like error message handling, redirect, and so on'''
 def register_page(request):
@@ -19,7 +23,7 @@ def register_page(request):
             profile.user = user
             profile.save()
             #messages.success(request, 'success')
-            return redirect('profile')
+            return render(request, 'JournalSubmission/home.html')
     else:
         form = CreateUserForm()
         form_profile = ProfileDetailsForm()
@@ -37,10 +41,7 @@ def login_page(request):
         if user is not None:
             login(request, user)
 
-            user_db = Profile.objects.get(user=user)
-            # Filter the database to get all the submissions by this author
-            context = {"user": user_db}
-            return render(request, 'users/profile.html', context)
+            return render(request, 'JournalSubmission/home.html')
         else:
             messages.info(request, 'Username or Password is incorrect')
             login_failed = True
@@ -55,9 +56,44 @@ def logout_user(request):
 
 
 def displayProfile(request, pk):
+    """
+    Obtain the database entry from the specified primary key. This data is to display the user on the profile page.
+    :param request:
+    :param pk: the primary key of the user sending the request. Use this for querying into the Profile database
+    :return: the rendering of the profile page.
+    """
 
-    user_db = Profile.objects.get(user=User.objects.get(pk=pk))
+
+    # Get the user databse object of the profile request
+    user_db = getProfile(pk)
+
+    if request.method == "POST":
+        base_journal = Journal(editor=user_db)
+        form = JournalForm(request.POST, instance=base_journal)
+        if form.is_valid():
+            form.save()
+        else:
+            raise Exception("Please catch these invalid forms")
+
+
     context = {"user": user_db}
+
+    # Get the submissions of the author
+    if user_db.role == "author":
+        context["submissionLISTreviewing"] = getSubmissionsAUTHOR(user_db, True)
+        context["submissionLISTdone"] = getSubmissionsAUTHOR(user_db, False)
+    if user_db.role == 'editor':
+        try:
+            # Make a query by editor to see if this editor has already created a journal
+            journal_db = getJournal(user_db)
+
+            # If here gotten the journal object.
+            # Get all submissions made for this journal that are pending and display in editor profile
+            context["hasJournal"] = True
+        except:
+            context["hasJournal"] = False
+            context["journalForm"] = JournalForm()
+
     return render(request, 'users/profile.html', context)
 
 
