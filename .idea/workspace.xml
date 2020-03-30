@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47cc4c2a-2b98-4761-b7a5-85ba492a080e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/users/decorators.py" afterDir="false" />
+    <list default="true" id="47cc4c2a-2b98-4761-b7a5-85ba492a080e" name="Default Changelist" comment="Skeleton Registration Form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PaperSubmissionSystem/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PaperSubmissionSystem/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/submission.html" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/submission.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/success_message.html" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/templates/JournalSubmission/success_message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,16 +132,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\users\static\users" />
-      <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\templates" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\users\templates\users" />
       <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\JournalSubmission\templates\JournalSubmission" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\users\static\users" />
+      <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\templates" />
+    </key>
   </component>
-  <component name="RunManager" selected="Django server.PaperSubmissionSystem">
+  <component name="RunManager" selected="Python.manage">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PaperSubmissionSystem" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,7 +189,6 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django server.PaperSubmissionSystem" />
       <item itemvalue="Python.manage" />
     </list>
     <recent_temporary>
@@ -249,7 +252,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -427,10 +432,10 @@
     </state>
     <state x="2601" y="202" width="547" height="678" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584333639252" />
     <state x="2601" y="907" key="git4idea.branch.GitSmartOperationDialog/1920.709.1920.1060/0.40.1920.1040@1920.709.1920.1060" timestamp="1585372119257" />
-    <state x="2063" y="238" width="672" height="698" key="search.everywhere.popup" timestamp="1584487995277">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="143" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1585544302297">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="2063" y="238" width="672" height="698" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584487995277" />
-    <state x="143" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1583288333367" />
+    <state x="143" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1585544302297" />
   </component>
 </project>
