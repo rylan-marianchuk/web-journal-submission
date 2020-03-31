@@ -29,7 +29,7 @@ urlpatterns = [
     path('login/', user_Views.login_page, name= 'login'),
     path('logout/', user_Views.logout_user, name= 'logout'),
     path('profile/(?P<pk>)/$', user_Views.displayProfile, name= 'profile'),
-
+    path('feedback/(?P<submission>)/', journal_Views.seeFeedback, name='feedback'),
     #Journal URLS
     path('submission/(?P<user>)/$', journal_Views.newSubmission, name= 'submission'),
     path('success_message/', journal_Views.successMessage, name='success_message'),

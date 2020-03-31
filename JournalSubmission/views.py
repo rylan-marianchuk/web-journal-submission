@@ -54,6 +54,8 @@ def newSubmission(request, *args, **kwargs):
         if form.is_valid() and selfValidate(form):
             form.save()
             form.notify_editor(form)
+        else:
+            return redirect('home')
         return redirect('success_message')
     else:
         form = SubmissionForm()
@@ -65,7 +67,7 @@ def selfValidate(form):
     """
     Manual validation function of a submission form
 
-    Display helpful error messages when the form fails validaiton criterion
+    Display helpful error messages when the form fails validation criterion
 
     :param form: the model form object of the current submission just made by the author
     :return: bool whether the form satisfies the valid criteria proposed
@@ -77,3 +79,17 @@ def selfValidate(form):
     # Ensure the file type was a pdf
 
     return is_valid
+
+
+
+def seeFeedback(request, *args, **kwargs):
+    """
+    The view to be called when a user clicks on the new submission button on their profile.
+    """
+    submission_name = kwargs['submission']
+    submission = Submission.objects.get(title=submission_name)
+    context = {'rev1Rejected': submission.didReject(1), 'rev2Rejected':  submission.didReject(2),
+               'rev3ejected':  submission.didReject(3)}
+    context.update({'submission' : submission})
+
+    return render(request, 'JournalSubmission/feedback.html', context)

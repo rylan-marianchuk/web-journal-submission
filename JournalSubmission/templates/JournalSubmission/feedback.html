@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+
+.body {
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.container {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    height: auto;
+
+}
+
+
+
+.menu {
+    margin-top: -130px;
+    text-align: left;
+    color: white;
+    line-height: 8px;
+    cursor: pointer;
+
+}
+
+menu p {
+    padding: 0px;
+
+}
+.profile-picture img {
+    border-radius: 100%;
+    margin-top: -60px;
+    border: solid;
+    border-width: 4px;
+    border-color: white;
+}
+
+
+.name {
+    text-transform: uppercase;
+    font-size: 5em;
+}
+
+.location {
+    color: gray;
+    margin: -10px;
+}
+
+.bio p {
+    padding: 10px;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.stats p {
+    color: gray;
+    font-size: 12px;
+    margin-bottom: -15px;
+    text-transform: uppercase;
+}
+
+.followers {
+    padding-right: 60px;
+}
+
+
+.following {
+    padding-right: 60px;
+}
+
+.topics {
+    padding-right: 60px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px 30px 50px;
+
+}
+
+.message-me {
+    position: relative;
+    padding: 18px 10px 18px 10px;
+    margin-top: 20px;
+    border: solid #ff2d55 1px;
+    border-radius: 50px;
+    background-color: #ff2d55;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+}
+.follow-me {
+    width: 50%;
+    position: relative;
+    padding: 18px 10px 18px 10px;
+    margin-top: 20px;
+    border: solid gray 1px;
+    border-radius: 50px;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    cursor: pointer;
+    color: rgb(49, 49, 49);
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.message-me:hover {
+    background-color: #ffffff;
+    color: rgb(54, 54, 54);
+}
+.follow-me:hover {
+    background-color: #408afa;
+    color: rgb(255, 255, 255);
+    border-color: #408afa;
+}
+
+@media (min-width: 600px) {
+
+    .container {
+        border-radius: 2px;
+        box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+  0 12.5px 10px rgba(0, 0, 0, 0.035),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.042),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+  0 100px 80px rgba(0, 0, 0, 0.07);
+    }
+
+    .container-head {
+        border-radius: 2px;
+    }
+
+    .buttons {
+        margin-bottom: 40px;
+    }
+
+
+}
+
+
+    </style>
+
+<div class="container">
+    <div class="container-body">
+        <h4>Reviewer 1:</h4>
+        {% if rev1Rejected %}
+            <p style="color: #ff7276;"> Your reviewer {{ submission.reviewer1 }} rejected your submission. Here is their
+            feedback:</p>
+            <p>{{ submission.reviewer1_FEED }}</p>
+        {% else %}
+            <p> Your reviewer {{ submission.reviewer1 }} accepted your submission!</p>
+        {% endif %}
+        <hr style="padding: 5% 0 5% 0">
+
+        <h4>Reviewer 2:</h4>
+        {% if rev2Rejected %}
+            <p style="color: #ff7276;"> Your reviewer {{ submission.reviewer2 }} rejected your submission. Here is their
+            feedback:</p>
+            <p>{{ submission.reviewer2_FEED }}</p>
+        {% else %}
+            <p> Your reviewer {{ submission.reviewer2 }} accepted your submission!</p>
+        {% endif %}
+        <hr style="padding: 5% 0 5% 0">
+
+        <h4>Reviewer 3:</h4>
+        {% if rev3Rejected %}
+            <p style="color: #ff7276;"> Your reviewer {{ submission.reviewer3 }} rejected your submission. Here is their
+            feedback:</p>
+            <p>{{ submission.reviewer3_FEED }}</p>
+        {% else %}
+            <p> Your reviewer {{ submission.reviewer3 }} accepted your submission!</p>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock content %}

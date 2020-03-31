@@ -1,17 +1,15 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib import messages
-from django.urls import reverse
-
-from JournalSubmission.models import Journal
-from JournalSubmission.forms import JournalForm
-from .forms import CreateUserForm, ProfileDetailsForm
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .decorators import user_unauthenticated
-from .query import *
 from django.contrib.auth.models import Group
+from django.shortcuts import render, redirect
+
+from JournalSubmission.forms import JournalForm, EditorAccept, ReviewerForm
+from .decorators import user_unauthenticated
+from .forms import CreateUserForm, ProfileDetailsForm
+from .query import *
+
 '''Still few tweaks are required like error message handling, redirect, and so on'''
 
 @user_unauthenticated
@@ -28,6 +26,7 @@ def register_page(request):
             #testing purposes 'print'
             print(user_data)
             #user automatically added to chosen role group in the backend
+            """
             if user_data == 'author':
                group = Group.objects.get(name='Author')
                user.groups.add(group)
@@ -38,6 +37,7 @@ def register_page(request):
                 group = Group.objects.get(name='Reviewer')
                 user.groups.add(group)
             #messages.success(request, 'success')
+            """
             return redirect('login')
     else:
         form = CreateUserForm()
@@ -67,6 +67,8 @@ def logout_user(request):
     logout(request)
     return redirect('login')
 
+
+
 @login_required(login_url='login')
 def displayProfile(request, pk):
     """
@@ -76,38 +78,178 @@ def displayProfile(request, pk):
     :return: the rendering of the profile page.
     """
 
-
     # Get the user databse object of the profile request
     profile_db = getProfile(pk)
-
-    if request.method == "POST":
-        base_journal = Journal(editor=profile_db)
-        form = JournalForm(request.POST, instance=base_journal)
-        if form.is_valid():
-            form.save()
-        else:
-            raise Exception("Please catch these invalid forms")
-
-
 
     context = {"profile": profile_db}
 
     # Get the submissions of the author
     if profile_db.role == "author":
-        context["submissionLISTreviewing"] = getSubmissionsAUTHOR(profile_db, True)
-        context["submissionLISTdone"] = getSubmissionsAUTHOR(profile_db, False)
-    if profile_db.role == 'editor':
-        try:
-            # Make a query by editor to see if this editor has already created a journal
-            journal_db = getJournal(profile_db)
-
-            # If here gotten the journal object.
-            # Get all submissions made for this journal that are pending and display in editor profile
-            context["hasJournal"] = True
-        except:
-            context["hasJournal"] = False
-            context["journalForm"] = JournalForm()
+        context.update(getContextForAuthor(profile_db))
+    elif profile_db.role == 'editor':
+        context.update(getContextForEditor(profile_db, request.method == "POST", request))
+    elif profile_db.role == 'reviewer':
+        context.update(getContextForReviewer(profile_db, request.method == "POST", request))
 
     return render(request, 'users/profile.html', context)
 
 
+
+def getContextForEditor(profile_db, posting, request):
+    """
+    Acquire all required data to display the editors profile page
+
+    :param profile_db: the profile model of this user
+    :param posting: bool whether this display request is a posting of a form
+    :param request: this request object
+    :return: the context dictionary, the info to pass to html file
+    """
+
+    context = {}
+    # Make a query by editor to see if this editor has already created a journal
+
+    if len(getJournal(profile_db)) == 0:
+
+        # Check if the display request was a post
+        if posting:
+            base_journal = Journal(editor=profile_db)
+            form = JournalForm(request.POST, instance=base_journal)
+            if form.is_valid():
+                form.save()
+                return getContextForEditor(profile_db, False, request)
+            else:
+                messages.info(request, 'This form is invalid')
+        context["hasJournal"] = False
+        context["journalForm"] = JournalForm()
+        return context
+
+    # If here gotten the journal object.
+
+
+    # Get all submissions made for this journal that are pending and display in editor profile
+    context["hasJournal"] = True
+    toApprove = getSubmissionsEditor(getJournal(profile_db)[0], editorApproved=False)
+
+
+    # Check if editor posted something.
+    if posting:
+        # If true, then it must be the case that toApprove (the result of the query for submissions to his journal),
+        # is not null
+        form = EditorAccept(request.POST)
+        if form.is_valid():
+            # Update the submission object
+            toApprove.reviewer1 = getProfile_id(int(form.data['reviewer1']))
+            toApprove.reviewer2 = getProfile_id(int(form.data['reviewer2']))
+            toApprove.reviewer3 = getProfile_id(int(form.data['reviewer3']))
+            toApprove.editorApproved = True
+            toApprove.inReview = True
+            toApprove.save()
+            return getContextForEditor(profile_db, False, request)
+        else:
+            messages.info(request, 'This form is invalid')
+
+    if toApprove != None:
+        context["toApprove"] = True
+        context["approveForm"] = EditorAccept(initial={'reviewer1': toApprove.reviewer1,
+                                                  'reviewer2': toApprove.reviewer2,
+                                                  'reviewer3': toApprove.reviewer3,
+                                                  'title': toApprove.title})
+    else:
+        context["toApprove"] = False
+
+    # The list of submissions the editor has accepted to reviewers. This is mainly
+    # to display status with no functionality
+    context["statusOfApproved"] = getSubmissionsJournal(getJournal(profile_db)[0], editorApproved=True)
+    return context
+
+
+def getContextForAuthor(profile_db):
+    """
+    Acquire all required data to display the editors profile page
+
+    :param profile_db: the profile model of this user
+    :return: the context dictionary, the info to pass to html file
+    """
+    context = {}
+    context["submissionLISTreviewing"] = getSubmissionsAUTHOR(profile_db, True)
+    context["submissionLISTdone"] = getSubmissionsAUTHOR(profile_db, False)
+    return context
+
+
+def getContextForReviewer(profile_db, posting, request):
+    """
+    Acquire all required data to display the editors profile page
+
+    :param profile_db: the profile model of this user
+    :param posting: bool whether this display request is a posting of a form
+    :param request: this request object
+    :return: the context dictionary, the info to pass to html file
+    """
+    context = {'reviewer_form': ReviewerForm(), 'hasReview': False}
+
+    toReview, reviewer_number = getSubmissionsToReview(profile_db.id)
+
+    if posting:
+        # If true, then it must be the case that toRemove (the result of the query for submissions including this reviewer),
+        # is not null
+        form = ReviewerForm(request.POST)
+        if form.is_valid():
+            # Add this reviewer number to the set of reviewers seen on this submission object
+            toReview.reviewed(reviewer_number, int(request.POST['accept']))
+            if int(request.POST['accept']):
+                reviewerAccept(toReview)
+            else:
+                reviewerReject(toReview, request.POST['comment'], reviewer_number)
+        return getContextForReviewer(profile_db, False, request)
+
+
+
+    if toReview == None:
+        return context
+
+    # There exists submissions for this reviewer, found by the query
+    context['hasReview'] = True
+    context['toReview'] = toReview
+    return context
+
+
+def reviewerAccept(toReview):
+    """
+
+    :param toReview: the submission object that is being reviewed
+    :param reviewer_number: the number in [1, 3] of this reviewer
+    :return:
+    """
+
+    # IF this acceptance post was the final review and NO ONE rejected, this articl ehas been accepted, i.e. is no longer in review.
+    if toReview.isReviewed() and sum([1 for i in range(1, 4) if toReview.didReject(i)]) == 0:
+        toReview.inReview = False
+        toReview.save()
+    return
+
+
+def reviewerReject(toReview, comment, reviewer_id):
+    """
+
+    :param toReview: the submission object that is being reviewed
+    :param comment: the text the reviewer gave as feedback for rejection
+    :return:
+    """
+
+    if reviewer_id == 1:
+        toReview.reviewer1_FEED = comment
+    if reviewer_id == 1:
+        toReview.reviewer2_FEED = comment
+    if reviewer_id == 1:
+        toReview.reviewer3_FEED = comment
+
+    # If this was the last reviewer to reject: put feedback ready
+    if toReview.isReviewed():
+        toReview.feedbackReady = True
+        toReview.resubmissions_remaining -= 1
+        if toReview.resubmissions_remaining == 0:
+            toReview.rejected = True
+            toReview.inReview = False
+
+    toReview.save()
+    return

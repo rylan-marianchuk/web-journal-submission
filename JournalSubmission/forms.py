@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from .models import Submission, Journal
 from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
+from django import forms
 
 class JournalForm(ModelForm):
     """
@@ -61,7 +62,7 @@ class SubmissionForm(ModelForm):
 
     def notify_reviewers(self, submisison):
         """
-        PRECONDITION: The Editor confirmed the submissison and added any new editors. He/She also confirmed
+        PRECONDITION: The Editor confirmed the submission and added any new editors. He/She also confirmed
                         the reviewers for this post are relevant.
 
         Given that the submission object parameter was just posted, notify the editor of the journal specified
@@ -71,3 +72,40 @@ class SubmissionForm(ModelForm):
 
 
         return
+
+
+class EditorAccept(ModelForm):
+    class Meta:
+        model = Submission
+        fields = ['title', 'reviewer1', 'reviewer2', 'reviewer3']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'SUBMIT'))
+
+
+class ReviewerForm(forms.Form):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'SUBMIT'))
+
+    accept = forms.TypedChoiceField(
+        label = "Please choose whether you believe this journal should publish this work:",
+        choices = ((1, "ACCEPT"), (0, "REJECT")),
+        coerce = lambda x: bool(int(x)),
+        widget = forms.RadioSelect,
+        initial = '0',
+        required = True,
+    )
+
+    comment = forms.CharField(
+        required=False,
+        widget=forms.Textarea,
+        label="IF you are rejecting the work, give specific feedback as to where the author can improve."
+        )
+

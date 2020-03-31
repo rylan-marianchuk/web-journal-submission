@@ -174,24 +174,25 @@ menu p {
             {{profile.discipline}}
         </div>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">SUBMISSIONS IN REVIEW</th>
-              <th scope="col">SUBMISSIONS ACCEPTED</th>
-              <th scope="col">UNIQUE JOURNALS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ profile.submissions_pending }}</td>
-              <td>{{ profile.submissions_accpeted}}</td>
-              <td>{{ profile.unique_journals }}</td>
-            </tr>
-          </tbody>
-        </table>
+
 
         {% if profile.role == "author" %}
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">SUBMISSIONS IN REVIEW</th>
+                  <th scope="col">SUBMISSIONS ACCEPTED</th>
+                  <th scope="col">UNIQUE JOURNALS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ profile.submissions_pending }}</td>
+                  <td>{{ profile.submissions_accpeted}}</td>
+                  <td>{{ profile.unique_journals }}</td>
+                </tr>
+              </tbody>
+            </table>
 
             <div class="buttons">
             <a href="{% url 'submission' profile %}" ><button class="message-me">New Submission</button></a>
@@ -204,32 +205,131 @@ menu p {
               <thead>
                 <tr>
                   <th scope="col">STATUS</th>
-                  <th scope="col">DATE SUBMITTED</th>
+                  <th scope="col">RESUBMISSIONS REMAINING</th>
                   <th scope="col">TITLE</th>
                   <th scope="col">JOURNAL</th>
                   <th scope="col">REVIEWER 1</th>
                   <th scope="col">REVIEWER 2</th>
                   <th scope="col">REVIEWER 3</th>
+                  <th scope="col">Feedback</th>
                 </tr>
               </thead>
               <tbody>
 
-              <!-- Display all the submission list in a table to view their status
-              for loop goes here
+              <!-- Display all the submission list in a table to view their status                -->
+                {% for submission in submissionLISTreviewing %}
+                    <tr>
+                      <td style="color: red;">IN REVIEW</td>
+                      <td>{{ submission.resubmissions_remaining }}</td>
+                      <td>{{ submission.title }}</td>
+                      <td>{{ submission.journal }}</td>
+                      <td>{{ submission.reviewer1 }}</td>
+                      <td>{{ submission.reviewer2 }}</td>
+                      <td>{{ submission.reviewer3 }}</td>
+                        {% if submission.feedbackReady %}
+                            <td><a href="{% url 'feedback' submission %}">
+                            <button type="button" class="message-me">FEEDBACK</button>
+                          </a></td>
+                        {% else %}
+                            <td>No feedback yet</td>
+                        {% endif %}
+
+                    </tr>
+                    {% if submission.feedbackReady %}
+                        <tr><td><a href="{% url 'submission' profile %}" ><button class="message-me">RESUBMIT</button></a></td></tr>
+                    {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+
+            <div class="location" style="padding-top: 5%;">
+                <p>SUBMISSIONS FINISHED</p>
+            </div>
+            <table class="table table-light">
+              <thead>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <th scope="col">STATUS</th>
+                  <th scope="col">TITLE</th>
+                  <th scope="col">JOURNAL</th>
                 </tr>
-              end for
-              -->
+              </thead>
+              <tbody>
+
+              <!-- Display all the submission list in a table to view their status                -->
+                {% for submission in submissionLISTdone %}
+                    <tr>
+                    {% if submission.rejected %}
+                       <td style="color: red;">REJECTED</td>
+                    {% else %}
+                        <td style="color: lightgreen;">ACCEPTED</td>
+                    {% endif %}
+
+                      <td>{{ submission.title }}</td>
+                      <td>{{ submission.journal }}</td>
+                    </tr>
+                {% endfor %}
               </tbody>
             </table>
         {% endif %}
 
         {% if profile.role == "editor" %}
             {% if hasJournal %}
-                <p>Great, you've made a journal</p>
+                <p>Great, you've made a journal. Here are your current submissions you should send to reviewers.</p>
+
+
+                <div class="location">
+                    <h5>PLEASE CONFIRM</h5>
+                </div>
+
+                {% if toApprove %}
+                      <!-- Display all the submissions the editor must confirm           -->
+                    <p>Reviewers the author selected: (you may override this)</p>
+                    <!-- Add form for editor           -->
+                    {% crispy approveForm %}
+                    <hr>
+                {% endif %}
+
+
+
+                <div class="location" style="padding-top: 8%">
+                    <p>SUBMISSIONS CONFIRMED</p>
+                </div>
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">STATUS</th>
+                      <th scope="col">AUTHOR</th>
+                      <th scope="col">RESUBMISSIONS REMAINING</th>
+                      <th scope="col">TITLE</th>
+                      <th scope="col">JOURNAL</th>
+                      <th scope="col">REVIEWER 1</th>
+                      <th scope="col">REVIEWER 2</th>
+                      <th scope="col">REVIEWER 3</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  <!-- Display all the submission list in a table to view their status                -->
+                    {% for submission in statusOfApproved %}
+                        <tr>
+                            {% if submission.inReview %}
+                               <td style="color: lightblue;">IN REVIEW</td>
+                            {% elif submission.rejected %}
+                                <td style="color: red;">REJECTED</td>
+                            {% else %}
+                                <td style="color: lightgreen;">ACCEPTED</td>
+                            {% endif %}
+                            <td>{{ submission.author }}</td>
+                            <td>{{ submission.resubmissions_remaining }}</td>
+                            <td>{{ submission.title }}</td>
+                            <td>{{ submission.journal }}</td>
+                            <td>{{ submission.reviewer1 }}</td>
+                            <td>{{ submission.reviewer2 }}</td>
+                            <td>{{ submission.reviewer3 }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
             {% else %}
                 <div style="text-align: center; padding-top: 5%; padding-left: 20%; padding-right: 20%;">
                     <!-- Form goes here -->
@@ -239,6 +339,28 @@ menu p {
             {% endif %}
         {% endif %}
 
+
+        {% if profile.role == "reviewer" %}
+            <hr>
+            {% if hasReview %}
+                <p style="padding-top: 5%;">Here is a paper that has been requested by the editor for you to review.
+                    Please fill out and submit
+                ths form.</p>
+
+                <p style="padding-top: 7%;">JOURNAL</p>
+                <h3 style="padding-top: 3%;">{{ toReview.journal }}</h3>
+
+                <p style="padding-top: 7%;">TITLE</p>
+                <h3 style="padding-top: 3%;">{{ toReview.title }}</h3>
+
+
+                <h3 style="padding-top: 5%;">FILE: <a href="{{ MEDIA_URL }}/{{ toReview.file }}">{{ toReview.file }}</a></h3>
+                <hr>
+                {% crispy reviewer_form %}
+            {% else %}
+                <h3>All caught up on your reviews! Please check back later.</h3>
+            {% endif %}
+        {% endif %}
     </div>
 </div>
 
