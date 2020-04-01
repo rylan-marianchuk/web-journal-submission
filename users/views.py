@@ -14,6 +14,10 @@ from .query import *
 from django.contrib.auth.models import Group
 
 
+''' The register_page function allows users to be added to groups dynamically based on role 
+selected when registering for the web application. Important, the database must have groups pre created
+as follows for this to work: 'Author', 'Editor', 'Reviewer' '''
+
 
 @user_unauthenticated
 def register_page(request):
@@ -26,7 +30,7 @@ def register_page(request):
             profile.user = user
             profile.save()
             user_data = form_profile['role'].value()
-            #user automatically added to chosen role group in the backend
+
             if user_data == 'author':
                group = Group.objects.get(name='Author')
                user.groups.add(group)
