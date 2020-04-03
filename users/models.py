@@ -9,7 +9,7 @@ fields like role, discipline and institute  which User Model does not offer by d
 
 class Profile(models.Model):
 
-    # All profiles will have these specific DJango form attributes
+    # All profiles will have these specific Django form attributes
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=100, choices=USER_TYPES, default='Author')
     discipline = models.CharField(max_length=100, blank=True)
@@ -25,3 +25,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+

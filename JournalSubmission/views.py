@@ -6,6 +6,7 @@ from .models import Submission
 from .forms import SubmissionForm
 from django.shortcuts import render, redirect
 from users.models import Profile
+from django.contrib import messages
 # Create your views here.
 
 
@@ -51,12 +52,18 @@ def newSubmission(request, *args, **kwargs):
         author = Profile.objects.get(user=User.objects.get(username=submitting_user))
         base_submisison = Submission(author=author)
         form = SubmissionForm(request.POST, request.FILES, instance=base_submisison)
-        if form.is_valid() and selfValidate(form):
-            form.save()
-            form.notify_editor(form)
-        else:
-            return redirect('home')
-        return redirect('success_message')
+        if form.is_valid():
+            form.save(commit=False)
+            user_1 = form.cleaned_data['reviewer1']
+            user_2 = form.cleaned_data['reviewer2']
+            user_3 = form.cleaned_data['reviewer3']
+            print(user_1, user_2, user_2)
+            if user_2 == user_1 or user_2 == user_3 or user_1 == user_3:
+                messages.error(request, "Invalid Reviewer selection, choose a reviewer only once.")
+                form = SubmissionForm()
+            else:
+                form.notify_editor(form)
+                return redirect('success_message')
     else:
         form = SubmissionForm()
     return render(request, 'JournalSubmission/submission.html', {'form':form})

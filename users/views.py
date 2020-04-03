@@ -9,8 +9,13 @@ from JournalSubmission.forms import JournalForm, EditorAccept, ReviewerForm
 from .decorators import user_unauthenticated
 from .forms import CreateUserForm, ProfileDetailsForm
 from .query import *
+from django.contrib.auth.models import Group
 
-'''Still few tweaks are required like error message handling, redirect, and so on'''
+
+''' The register_page function allows users to be added to groups dynamically based on role 
+selected when registering for the web application. Important, the database must have groups pre created
+as follows for this to work: 'Author', 'Editor', 'Reviewer' '''
+
 
 @user_unauthenticated
 def register_page(request):
@@ -23,10 +28,7 @@ def register_page(request):
             profile.user = user
             profile.save()
             user_data = form_profile['role'].value()
-            #testing purposes 'print'
-            print(user_data)
-            #user automatically added to chosen role group in the backend
-            """
+
             if user_data == 'author':
                group = Group.objects.get(name='Author')
                user.groups.add(group)
@@ -36,8 +38,8 @@ def register_page(request):
             elif user_data == 'reviewer':
                 group = Group.objects.get(name='Reviewer')
                 user.groups.add(group)
-            #messages.success(request, 'success')
-            """
+            user_name = form.cleaned_data.get('username')
+            messages.success(request, 'Account created for ' + user_name)
             return redirect('login')
     else:
         form = CreateUserForm()
@@ -77,6 +79,7 @@ def displayProfile(request, pk):
     :param pk: the primary key of the user sending the request. Use this for querying into the Profile database
     :return: the rendering of the profile page.
     """
+
 
     # Get the user databse object of the profile request
     profile_db = getProfile(pk)

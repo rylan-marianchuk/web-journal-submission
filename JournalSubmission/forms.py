@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Form
 from .models import Submission, Journal
 from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
