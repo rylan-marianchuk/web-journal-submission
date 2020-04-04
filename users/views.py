@@ -224,10 +224,11 @@ def reviewerAccept(toReview):
     :return:
     """
 
-    # IF this acceptance post was the final review and NO ONE rejected, this articl ehas been accepted, i.e. is no longer in review.
+    # IF this acceptance post was the final review and NO ONE rejected, this article has been accepted,
+    # i.e. is no longer in review.
     if toReview.isReviewed() and sum([1 for i in range(1, 4) if toReview.didReject(i)]) == 0:
         toReview.inReview = False
-        toReview.save()
+    toReview.save()
     return
 
 
@@ -241,9 +242,9 @@ def reviewerReject(toReview, comment, reviewer_id):
 
     if reviewer_id == 1:
         toReview.reviewer1_FEED = comment
-    if reviewer_id == 1:
+    if reviewer_id == 2:
         toReview.reviewer2_FEED = comment
-    if reviewer_id == 1:
+    if reviewer_id == 3:
         toReview.reviewer3_FEED = comment
 
     # If this was the last reviewer to reject: put feedback ready

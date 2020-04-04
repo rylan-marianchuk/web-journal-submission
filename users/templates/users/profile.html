@@ -235,9 +235,6 @@ menu p {
                         {% endif %}
 
                     </tr>
-                    {% if submission.feedbackReady %}
-                        <tr><td><a href="{% url 'submission' profile %}" ><button class="message-me">RESUBMIT</button></a></td></tr>
-                    {% endif %}
                 {% endfor %}
               </tbody>
             </table>
@@ -345,7 +342,7 @@ menu p {
             {% if hasReview %}
                 <p style="padding-top: 5%;">Here is a paper that has been requested by the editor for you to review.
                     Please fill out and submit
-                ths form.</p>
+                this form.</p>
 
                 <p style="padding-top: 7%;">JOURNAL</p>
                 <h3 style="padding-top: 3%;">{{ toReview.journal }}</h3>

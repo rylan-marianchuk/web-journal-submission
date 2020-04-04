@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
 from .models import Submission
-from .forms import SubmissionForm
+from .forms import SubmissionForm, ResubmissionForm
 from django.shortcuts import render, redirect
 from users.models import Profile
 from django.contrib import messages
@@ -62,7 +62,7 @@ def newSubmission(request, *args, **kwargs):
                 messages.error(request, "Invalid Reviewer selection, choose a reviewer only once.")
                 form = SubmissionForm()
             else:
-                form.notify_editor(form)
+                form.save()
                 return redirect('success_message')
     else:
         form = SubmissionForm()
@@ -70,33 +70,49 @@ def newSubmission(request, *args, **kwargs):
 
 
 
-def selfValidate(form):
-    """
-    Manual validation function of a submission form
-
-    Display helpful error messages when the form fails validation criterion
-
-    :param form: the model form object of the current submission just made by the author
-    :return: bool whether the form satisfies the valid criteria proposed
-    """
-
-    is_valid = True
-    # Ensure all reviewers are unique
-
-    # Ensure the file type was a pdf
-
-    return is_valid
-
-
-
 def seeFeedback(request, *args, **kwargs):
     """
     The view to be called when a user clicks on the new submission button on their profile.
+
+    Displays the comments from each reviewer if they decided to reject the authors submission
+
+    Add an upload button at the end of the page only if there are resubmissions remaining for the author
+    to reupload their pdf of incorporated changes.
     """
     submission_name = kwargs['submission']
+
+    # Query to get this submission object
     submission = Submission.objects.get(title=submission_name)
+
+    if request.method == "POST":
+        # Incorporate a resubmission form
+        resub_form = ResubmissionForm(request.POST, request.FILES, instance=submission)
+        if resub_form.is_valid():
+            resub_form.save()
+            resubmitted(submission)
+            return redirect('success_message')
+
+    resub_form = ResubmissionForm()
     context = {'rev1Rejected': submission.didReject(1), 'rev2Rejected':  submission.didReject(2),
                'rev3ejected':  submission.didReject(3)}
-    context.update({'submission' : submission})
+    context.update({'submission' : submission, "form": resub_form})
 
     return render(request, 'JournalSubmission/feedback.html', context)
+
+
+def resubmitted(submission):
+    """
+    Reset all submission values necessary for a resubmisison.
+
+    Note the integer resubmissions remaining has already been decremented
+    :param submission:
+    :return:
+    """
+
+    submission.seen_accept = ""
+    submission.feedbackReady = False
+    submission.reviewer1_FEED = ""
+    submission.reviewer2_FEED = ""
+    submission.reviewer3_FEED = ""
+    submission.save()
+    return

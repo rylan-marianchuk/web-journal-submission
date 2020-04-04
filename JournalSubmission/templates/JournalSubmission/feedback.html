@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 <style>
 
@@ -156,6 +157,8 @@ menu p {
 
 <div class="container">
     <div class="container-body">
+        <a style="padding: 7% 0 15% 0" href="{% url 'profile' user.pk %}"><button class="btn login_btn" > Back to Profile</button></a>
+
         <h4>Reviewer 1:</h4>
         {% if rev1Rejected %}
             <p style="color: #ff7276;"> Your reviewer {{ submission.reviewer1 }} rejected your submission. Here is their
@@ -184,6 +187,11 @@ menu p {
         {% else %}
             <p> Your reviewer {{ submission.reviewer3 }} accepted your submission!</p>
         {% endif %}
+        <hr style="padding: 5% 0 5% 0">
+
+        <h2>Resubmit:</h2>
+        {% crispy form %}
+
 
     </div>
 </div>
