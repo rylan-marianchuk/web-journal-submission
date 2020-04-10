@@ -1,5 +1,4 @@
 from django.test import TestCase
-import unittest
 from .models import Journal
 from users.models import Profile
 from django.contrib.auth.models import User

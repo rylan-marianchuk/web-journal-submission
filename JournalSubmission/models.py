@@ -1,7 +1,6 @@
 from django.db import models
-from users.forms import Profile
-from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model as user_model
+from users.models import Profile
+
 
 # Create your models here.
 class Journal(models.Model):
