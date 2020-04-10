@@ -1,9 +1,8 @@
-from django.forms import ModelForm, Form
+from django.forms import ModelForm
 from .models import Submission, Journal
 from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
 from django import forms
-from django.contrib.auth.models import Group, User
 from users.models import Profile
 
 class JournalForm(ModelForm):

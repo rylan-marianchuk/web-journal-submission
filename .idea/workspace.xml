@@ -3,28 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="47cc4c2a-2b98-4761-b7a5-85ba492a080e" name="Default Changelist" comment="Created an Editor Check form">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0002_auto_20200320_2121.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0003_auto_20200321_1320.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0004_auto_20200327_2033.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0005_submission_inreview.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0006_auto_20200330_2322.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0007_auto_20200331_1330.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0008_auto_20200331_1336.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0009_submission_seen_accept.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JournalSubmission/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0002_delete_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0003_profile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0004_auto_20200317_1854.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +72,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -106,7 +88,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -245,6 +227,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Created app and Bootstrap Nav Bar" />
     <MESSAGE value="Skeleton Registration Form" />
     <MESSAGE value="Create Submission Model, Profile Page" />
@@ -374,13 +357,13 @@
       <screen x="1920" y="709" width="1920" height="1060" />
     </state>
     <state x="2644" y="934" key="RollbackChangesDialog/1920.709.1920.1060/0.40.1920.1040@1920.709.1920.1060" timestamp="1585371557674" />
-    <state x="-747" y="1380" width="1037" height="732" key="SettingsEditor" timestamp="1584814288398">
-      <screen x="-954" y="1100" width="1920" height="1060" />
+    <state x="720" y="236" width="1037" height="732" key="SettingsEditor" timestamp="1586511054179">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="207" y="315" key="SettingsEditor/-3840.-345.1920.1060/0.40.1920.1040@0.40.1920.1040" timestamp="1584489562478" />
     <state x="-747" y="1380" key="SettingsEditor/-954.1100.1920.1060/0.40.1920.1040@-954.1100.1920.1060" timestamp="1584814288398" />
     <state x="94" y="78" key="SettingsEditor/0.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1583434714409" />
-    <state x="207" y="278" width="1037" height="732" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1583547191718" />
+    <state x="720" y="236" width="1037" height="732" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1586511054179" />
     <state x="2334" y="951" width="800" height="530" key="Vcs.Push.Dialog.v2" timestamp="1585374409029">
       <screen x="1920" y="709" width="1920" height="1060" />
     </state>
