@@ -21,12 +21,10 @@ class Profile(models.Model):
     submissions_accpeted = None
     unique_journals = None
 
+
     # Will be populated (updated) on each request to veiw their profile.
     # Submissions and their relevant info (i.e. status) will be displayed in a table in the users profile page.
 
-    def __str__(self, discipline, institute):
-        self.institute = institute
-        self.discipline = discipline
 
     def __str__(self):
         return self.user.username + " " +self.institute + " | " +self.discipline

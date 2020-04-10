@@ -2,29 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47cc4c2a-2b98-4761-b7a5-85ba492a080e" name="Default Changelist" comment="Created an Editor Check form">
+      <change afterPath="$PROJECT_DIR$/media/complete_Zm0zWR6.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/complete_fsYI9Zv.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/.coverage" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0002_auto_20200320_2121.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0003_auto_20200321_1320.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0004_auto_20200327_2033.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0005_submission_inreview.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0006_auto_20200330_2322.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0007_auto_20200331_1330.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0008_auto_20200331_1336.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0009_submission_seen_accept.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JournalSubmission/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JournalSubmission/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0002_delete_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0003_profile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0004_auto_20200317_1854.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +76,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -245,6 +231,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Created app and Bootstrap Nav Bar" />
     <MESSAGE value="Skeleton Registration Form" />
     <MESSAGE value="Create Submission Model, Profile Page" />
