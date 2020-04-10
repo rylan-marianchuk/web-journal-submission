@@ -166,33 +166,17 @@ menu p {
             {{profile.user}}
         </div>
 
-        <div class="location" style="padding: 30px;">
+        <div class="location" style="padding: 30px; font-size: 3em;">
             {{ profile.institute }}
         </div>
 
-        <div class="bio">
+        <div class="bio" style="padding: 30px; font-size: 3em;">
             {{profile.discipline}}
         </div>
 
 
 
         {% if profile.role == "author" %}
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">SUBMISSIONS IN REVIEW</th>
-                  <th scope="col">SUBMISSIONS ACCEPTED</th>
-                  <th scope="col">UNIQUE JOURNALS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{{ profile.submissions_pending }}</td>
-                  <td>{{ profile.submissions_accpeted}}</td>
-                  <td>{{ profile.unique_journals }}</td>
-                </tr>
-              </tbody>
-            </table>
 
             <div class="buttons">
             <a href="{% url 'submission' profile %}" ><button class="message-me">New Submission</button></a>
@@ -351,7 +335,7 @@ menu p {
                 <h3 style="padding-top: 3%;">{{ toReview.title }}</h3>
 
 
-                <h3 style="padding-top: 5%;">FILE: <a href="{{ MEDIA_URL }}/{{ toReview.file }}">{{ toReview.file }}</a></h3>
+                <h3 style="padding-top: 5%;">FILE: <a href="{{ toReview.file.url }}">{{ toReview.file }}</a></h3>
                 <hr>
                 {% crispy reviewer_form %}
             {% else %}

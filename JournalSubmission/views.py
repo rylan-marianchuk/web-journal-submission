@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
-from .models import Submission
+from .models import Submission, Journal
 from .forms import SubmissionForm, ResubmissionForm
 from django.shortcuts import render, redirect
 from users.models import Profile
@@ -24,17 +24,30 @@ def journalList(request):
     :param request:
     :return:
     """
-    return render (request, 'JournalSubmission/journalList.html')
+
+    context = {
+        "health" : list(Journal.objects.filter(subject="health & medicine")),
+        'humanities' : list(Journal.objects.filter(subject="humanities")),
+        'mathematics' : list(Journal.objects.filter(subject="mathematical sciences")),
+        'social_sciences' : list(Journal.objects.filter(subject="social sciences")),
+        'physical_sciences' : list(Journal.objects.filter(subject="physics"))
+    }
+    return render (request, 'JournalSubmission/journalList.html', context)
 
 
-def displayJournal(request):
+def displayJournal(request, *args, **kwargs):
     """
 
     :param request:
     :return:
     """
     # Get the journal object from the database
-    context = None
+    journal_string = kwargs['journal']
+    idnumber = Journal.objects.filter(title = journal_string)[0].id
+    subList = list(Submission.objects.filter(journal = idnumber, inReview = False, editorApproved = True,
+                              rejected = False))
+
+    context = {'accepted': subList, 'journal': Journal.objects.filter(title = journal_string)[0]}
 
     return render(request, "JournalSubmission/journal.html", context)
 
@@ -93,7 +106,7 @@ def seeFeedback(request, *args, **kwargs):
 
     resub_form = ResubmissionForm()
     context = {'rev1Rejected': submission.didReject(1), 'rev2Rejected':  submission.didReject(2),
-               'rev3ejected':  submission.didReject(3)}
+               'rev3Rejected':  submission.didReject(3)}
     context.update({'submission' : submission, "form": resub_form})
 
     return render(request, 'JournalSubmission/feedback.html', context)

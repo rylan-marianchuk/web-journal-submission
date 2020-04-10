@@ -20,7 +20,6 @@ from JournalSubmission import views as journal_Views
 
 
 urlpatterns = [
-    path('', journal_Views.homePage, name='home'),
     path('admin/', admin.site.urls),
 
     # User Authentication URLS
@@ -29,9 +28,10 @@ urlpatterns = [
     path('login/', user_Views.login_page, name= 'login'),
     path('logout/', user_Views.logout_user, name= 'logout'),
     path('profile/(?P<pk>)/$', user_Views.displayProfile, name= 'profile'),
-    path('feedback/(?P<submission>)/', journal_Views.seeFeedback, name='feedback'),
+    path('feedback/(?P<submission>)/$', journal_Views.seeFeedback, name='feedback'),
     #Journal URLS
     path('submission/(?P<user>)/$', journal_Views.newSubmission, name= 'submission'),
     path('success_message/', journal_Views.successMessage, name='success_message'),
-    path('journals/', journal_Views.journalList, name='journals')
+    path('', journal_Views.journalList, name='home'),
+    path('journal/(?P<journal>)/$', journal_Views.displayJournal, name='journalpage')
 ]

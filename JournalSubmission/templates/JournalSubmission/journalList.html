@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="accordion" id="accordionExample">
+<div style="text-align: center;
+    padding: 2% 30% 2%;" class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
@@ -12,11 +13,13 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
         <ul class="list-group list-group-flush card-body">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+                                {% for journal in health %}
+                                        <li class="list-group-item">
+                                            <a href="{% url 'journalpage' journal %}">
+                                                {{journal.title}}
+                                            </a>
+                                        </li>
+                                {% endfor %}
         </ul>
     </div>
   </div>
@@ -30,11 +33,13 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <ul class="list-group list-group-flush card-body">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+                               {% for journal in humanities %}
+                                        <li class="list-group-item">
+                                            <a href="{% url 'journalpage' journal %}">
+                                                {{journal.title}}
+                                            </a>
+                                        </li>
+                               {% endfor %}
         </ul>
     </div>
   </div>
@@ -48,11 +53,13 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
         <ul class="list-group list-group-flush card-body">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+                               {% for journal in mathematics %}
+                                        <li class="list-group-item">
+                                            <a href="{% url 'journalpage' journal %}">
+                                                {{journal.title}}
+                                            </a>
+                                        </li>
+                                {% endfor %}
         </ul>
     </div>
   </div>
@@ -66,11 +73,13 @@
     </div>
     <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
         <ul class="list-group list-group-flush card-body">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+                               {% for journal in social_sciences %}
+                                        <li class="list-group-item">
+                                            <a href="{% url 'journalpage' journal %}">
+                                                {{journal.title}}
+                                            </a>
+                                        </li>
+                               {% endfor %}
         </ul>
     </div>
   </div>
@@ -84,11 +93,13 @@
     </div>
     <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
         <ul class="list-group list-group-flush card-body">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+               {% for journal in physical_sciences %}
+                    <li class="list-group-item">
+                        <a href="{% url 'journalpage' journal %}">
+                            {{journal.title}}
+                        </a>
+                    </li>
+               {% endfor %}
         </ul>
     </div>
   </div>
