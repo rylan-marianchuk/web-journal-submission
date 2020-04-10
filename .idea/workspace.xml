@@ -2,19 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47cc4c2a-2b98-4761-b7a5-85ba492a080e" name="Default Changelist" comment="Created an Editor Check form">
-      <change afterPath="$PROJECT_DIR$/JournalSubmission/migrations/0006_auto_20200329_1310.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JournalSubmission/migrations/0007_auto_20200329_1314.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JournalSubmission/migrations/0008_submission_editorapproved.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JournalSubmission/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0002_auto_20200320_2121.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0003_auto_20200321_1320.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0004_auto_20200327_2033.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0005_submission_inreview.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0006_auto_20200330_2322.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0007_auto_20200331_1330.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0008_auto_20200331_1336.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/0009_submission_seen_accept.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JournalSubmission/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JournalSubmission/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JournalSubmission/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/JournalSubmission/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0002_delete_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0003_profile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0004_auto_20200317_1854.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +65,6 @@
     <option name="useSoftWraps" value="true" />
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="PaperSubmissionSystem" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -75,23 +82,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\.idea" />
-      </set>
-    </option>
-  </component>
   <component name="ProjectId" id="1YdyZZ7H1ayuUERapvESnvTjoy8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -116,7 +118,7 @@
       <recent name="C:\Users\rymar\OneDrive\UCalgary\PaperSubmissionSystem\JournalSubmission\templates\JournalSubmission" />
     </key>
   </component>
-  <component name="RunManager" selected="Django server.PaperSubmissionSystem">
+  <component name="RunManager" selected="Python.manage">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PaperSubmissionSystem" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -164,7 +166,6 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django server.PaperSubmissionSystem" />
       <item itemvalue="Python.manage" />
     </list>
     <recent_temporary>
@@ -236,13 +237,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created app and Bootstrap Nav Bar" />
@@ -422,11 +422,11 @@
     </state>
     <state x="2601" y="202" width="547" height="678" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584333639252" />
     <state x="2601" y="907" key="git4idea.branch.GitSmartOperationDialog/1920.709.1920.1060/0.40.1920.1040@1920.709.1920.1060" timestamp="1585372119257" />
-    <state x="2064" y="944" width="672" height="686" key="search.everywhere.popup" timestamp="1585536334597">
-      <screen x="1920" y="709" width="1920" height="1060" />
+    <state x="143" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1586392921613">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="2063" y="238" width="672" height="698" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1080@1920.0.1920.1080" timestamp="1584487995277" />
-    <state x="143" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1583288333367" />
+    <state x="143" y="231" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1586392921613" />
     <state x="2064" y="944" width="672" height="686" key="search.everywhere.popup/1920.709.1920.1060/0.40.1920.1040@1920.709.1920.1060" timestamp="1585536334597" />
   </component>
 </project>

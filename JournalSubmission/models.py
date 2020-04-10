@@ -1,5 +1,6 @@
 from django.db import models
 from users.forms import Profile
+from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model as user_model
 
 # Create your models here.
@@ -32,6 +33,7 @@ class Submission(models.Model):
     editorApproved = models.BooleanField(default=False)
     feedbackReady = models.BooleanField(default=False)
     resubmissions_remaining = models.IntegerField(default=3)
+
     reviewer1 = models.ForeignKey(Profile, on_delete=models.DO_NOTHING, related_name='reviewer_1',
                                   null= True, blank=True)
 

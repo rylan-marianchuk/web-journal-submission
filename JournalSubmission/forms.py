@@ -3,6 +3,8 @@ from .models import Submission, Journal
 from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
 from django import forms
+from django.contrib.auth.models import Group, User
+from users.models import Profile
 
 class JournalForm(ModelForm):
     """
@@ -33,9 +35,14 @@ class SubmissionForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.user = kwargs.pop('user', None)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'SUBMIT'))
+
+        self.fields['reviewer1'].queryset = Profile.objects.filter(role='reviewer')
+        self.fields['reviewer2'].queryset = Profile.objects.filter(role='reviewer')
+        self.fields['reviewer3'].queryset = Profile.objects.filter(role='reviewer')
 
 class ResubmissionForm(ModelForm):
     """
@@ -64,6 +71,10 @@ class EditorAccept(ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'SUBMIT'))
+
+        self.fields['reviewer1'].queryset = Profile.objects.filter(role='reviewer')
+        self.fields['reviewer2'].queryset = Profile.objects.filter(role='reviewer')
+        self.fields['reviewer3'].queryset = Profile.objects.filter(role='reviewer')
 
 
 class ReviewerForm(forms.Form):

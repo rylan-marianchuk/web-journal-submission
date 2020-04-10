@@ -44,7 +44,7 @@ def newSubmission(request, *args, **kwargs):
     """
     The view to be called when a user clicks on the new submission button on their profile.
     """
-    submitting_user = kwargs['user']
+    submitting_user = kwargs['user'].split(" ")[0]
 
     if request.method == "POST":
         # Generate the submission form object to save to the database
@@ -57,7 +57,6 @@ def newSubmission(request, *args, **kwargs):
             user_1 = form.cleaned_data['reviewer1']
             user_2 = form.cleaned_data['reviewer2']
             user_3 = form.cleaned_data['reviewer3']
-            print(user_1, user_2, user_2)
             if user_2 == user_1 or user_2 == user_3 or user_1 == user_3:
                 messages.error(request, "Invalid Reviewer selection, choose a reviewer only once.")
                 form = SubmissionForm()
