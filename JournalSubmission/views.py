@@ -71,6 +71,8 @@ def newSubmission(request, *args, **kwargs):
             user_3 = form.cleaned_data['reviewer3']
             title = form.cleaned_data['title']
             title_set = Submission.objects.filter(title=title).exists()
+
+            # Further validate this form to ensure the author did not choose themself as a reviewer
             if user_2 == user_1 or user_2 == user_3 or user_1 == user_3:
                 messages.error(request, "Invalid Reviewer selection, choose a reviewer only once.")
                 form = SubmissionForm()
@@ -109,6 +111,8 @@ def seeFeedback(request, *args, **kwargs):
             return redirect('success_message')
 
     resub_form = ResubmissionForm()
+
+    # Get the context needed to pass to this webpage.
     context = {'rev1Rejected': submission.didReject(1), 'rev2Rejected':  submission.didReject(2),
                'rev3Rejected':  submission.didReject(3)}
     context.update({'submission' : submission, "form": resub_form})
@@ -122,7 +126,7 @@ def resubmitted(submission):
 
     Note the integer resubmissions remaining has already been decremented
     :param submission:
-    :return:
+    :return: nothing, merely update the submission object in the database
     """
 
     submission.seen_accept = ""

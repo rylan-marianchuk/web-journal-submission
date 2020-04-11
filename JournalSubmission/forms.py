@@ -61,6 +61,10 @@ class ResubmissionForm(ModelForm):
 
 
 class EditorAccept(ModelForm):
+    """
+    When an author submits to an editor's journal, this form will be prompted to the editor to confirm
+    all is correct. The submission of this form will send the paper to its respective reviewers.
+    """
     class Meta:
         model = Submission
         fields = ['title', 'reviewer1', 'reviewer2', 'reviewer3']
@@ -77,6 +81,11 @@ class EditorAccept(ModelForm):
 
 
 class ReviewerForm(forms.Form):
+    """
+    The form for reviewers to give their feedback on submission. They must choose a bool whether they believe it
+    should be rejected or not. If rejected, they must provide feedback in the text area char field.
+    """
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -4,8 +4,10 @@ from users.models import Profile
 
 # Create your models here.
 class Journal(models.Model):
-    # Each instance is a entry in the database
-    # Fields in database
+    """
+    All the data fields relevant to constructing Journal object and its functionality
+    """
+
     title = models.CharField(max_length=1000)
 
     SUBJECTS = [('health & medicine', 'Health & Medicine'), ('humanities', 'Humanities'),
@@ -24,6 +26,11 @@ class Journal(models.Model):
 
 
 class Submission(models.Model):
+    """
+    Submission object for the database, holding all relevant fields needed. Every author creats this object when submitting
+    their work.
+    """
+
     journal = models.ForeignKey(Journal, on_delete=models.CASCADE)
     title = models.CharField(max_length=500)
     author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='author')
@@ -50,7 +57,9 @@ class Submission(models.Model):
 
     # integers in this set indicate the reviewer that has made their decision
     seen_accept = models.CharField(max_length=6, default="")
-    # ^ is a string in form : reviewer# bit bool accepted : eg 112030 means rev 1 accepted and 2 and 3 rejected
+    # ^ is a string in form : reviewer# (concatenated by) bit bool accepted :  eg 112030 means rev 1 accepted and 2 and 3 rejected
+
+    #  HELPER METHODS ------------------
 
     def __str__(self):
         return self.title
@@ -93,9 +102,8 @@ class Submission(models.Model):
     def didReject(self, reviewer_number):
         """
         Assume isReviewed is true, that is all reviewers have already provided feedback
-        Return bool whether the given reviewer rejected this submission
         :param reviewer_number:
-        :return:
+        :return: bool whether the given reviewer rejected this submission
         """
         for i in range(0, 5, 2):
             if self.seen_accept[i] == str(reviewer_number):

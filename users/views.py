@@ -9,13 +9,13 @@ from .query import *
 from django.contrib.auth.models import Group
 
 
-''' The register_page function allows users to be added to groups dynamically based on role 
-selected when registering for the web application. Important, the database must have groups pre created
-as follows for this to work: 'Author', 'Editor', 'Reviewer' '''
-
-
 @user_unauthenticated
 def register_page(request):
+    """
+    The register_page function allows users to be added to groups dynamically based on role
+    selected when registering for the web application. Important, the database must have groups pre created
+    as follows for this to work: 'Author', 'Editor', 'Reviewer'
+    """
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         form_profile = ProfileDetailsForm(request.POST)
@@ -54,7 +54,6 @@ def login_page(request):
         if user is not None:
             login(request, user)
             return redirect('home')
-            #return render(request, 'JournalSubmission/home.html')
         else:
             messages.info(request, 'Username or Password is incorrect')
     context = {}
@@ -83,7 +82,7 @@ def displayProfile(request, pk):
 
     context = {"profile": profile_db}
 
-    # Get the submissions of the author
+    # Get the context for each case of the user role
     if profile_db.role == "author":
         context.update(getContextForAuthor(profile_db))
     elif profile_db.role == 'editor':
@@ -149,7 +148,9 @@ def getContextForEditor(profile_db, posting, request):
             messages.info(request, 'This form is invalid')
 
     if toApprove != None:
+        # Then there exists some submission to his Journal
         context["toApprove"] = True
+        # Create the form and attatch it to the model.
         context["approveForm"] = EditorAccept(initial={'reviewer1': toApprove.reviewer1,
                                                   'reviewer2': toApprove.reviewer2,
                                                   'reviewer3': toApprove.reviewer3,
@@ -165,7 +166,7 @@ def getContextForEditor(profile_db, posting, request):
 
 def getContextForAuthor(profile_db):
     """
-    Acquire all required data to display the editors profile page
+    Acquire all required data to display the authors profile page
 
     :param profile_db: the profile model of this user
     :return: the context dictionary, the info to pass to html file
@@ -178,13 +179,14 @@ def getContextForAuthor(profile_db):
 
 def getContextForReviewer(profile_db, posting, request):
     """
-    Acquire all required data to display the editors profile page
+    Acquire all required data to display the Reviewers profile page
 
     :param profile_db: the profile model of this user
     :param posting: bool whether this display request is a posting of a form
     :param request: this request object
     :return: the context dictionary, the info to pass to html file
     """
+
     context = {'reviewer_form': ReviewerForm(), 'hasReview': False}
 
     toReview, reviewer_number = getSubmissionsToReview(profile_db.id)
@@ -215,6 +217,7 @@ def getContextForReviewer(profile_db, posting, request):
 
 def reviewerAccept(toReview):
     """
+    Update the submission object given that a reviewer has accepted their submission.
 
     :param toReview: the submission object that is being reviewed
     :param reviewer_number: the number in [1, 3] of this reviewer
@@ -234,11 +237,14 @@ def reviewerAccept(toReview):
 
 def reviewerReject(toReview, comment, reviewer_id):
     """
+    Update the submission object given that a reviewer has rejected their submission.
 
     :param toReview: the submission object that is being reviewed
+    :param reviewer_id: the number of this reviewer inclusive of [1,3]
     :param comment: the text the reviewer gave as feedback for rejection
     :return:
     """
+
 
     if reviewer_id == 1:
         toReview.reviewer1_FEED = comment
