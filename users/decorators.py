@@ -9,7 +9,7 @@ rendered to user if user is authenticated and redirects to journals page
 def user_unauthenticated(view_func):
     def wrapper_func(request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('journals')
+            return redirect('home')
         else:
             return view_func(request, *args, **kwargs)
     return wrapper_func

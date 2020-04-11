@@ -181,7 +181,7 @@ menu p {
                             <tr>
                                 <td>{{ submission.title }}</td>
                                 <td>{{ submission.author }}</td>
-                                <td><a href="{{ toReview.file.url }}">{{ toReview.file }}</a></td>
+                                <td><a href="{{ submission.file.url }}">{{ submission.file }}</a></td>
                             </tr>
                         {% endfor %}
                   </tbody>

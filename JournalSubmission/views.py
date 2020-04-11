@@ -69,8 +69,13 @@ def newSubmission(request, *args, **kwargs):
             user_1 = form.cleaned_data['reviewer1']
             user_2 = form.cleaned_data['reviewer2']
             user_3 = form.cleaned_data['reviewer3']
+            title = form.cleaned_data['title']
+            title_set = Submission.objects.filter(title=title).exists()
             if user_2 == user_1 or user_2 == user_3 or user_1 == user_3:
                 messages.error(request, "Invalid Reviewer selection, choose a reviewer only once.")
+                form = SubmissionForm()
+            elif title_set:
+                messages.error(request, "Journal title already exists, please try again with a different title.")
                 form = SubmissionForm()
             else:
                 form.save()

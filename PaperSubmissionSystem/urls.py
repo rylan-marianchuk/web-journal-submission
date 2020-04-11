@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from users import views as user_Views
 from JournalSubmission import views as journal_Views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -34,4 +36,4 @@ urlpatterns = [
     path('success_message/', journal_Views.successMessage, name='success_message'),
     path('', journal_Views.journalList, name='home'),
     path('journal/(?P<journal>)/$', journal_Views.displayJournal, name='journalpage')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

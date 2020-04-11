@@ -53,8 +53,8 @@ def login_page(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-
-            return render(request, 'JournalSubmission/home.html')
+            return redirect('home')
+            #return render(request, 'JournalSubmission/home.html')
         else:
             messages.info(request, 'Username or Password is incorrect')
     context = {}
@@ -225,6 +225,9 @@ def reviewerAccept(toReview):
     # i.e. is no longer in review.
     if toReview.isReviewed() and sum([1 for i in range(1, 4) if toReview.didReject(i)]) == 0:
         toReview.inReview = False
+    elif toReview.isReviewed():
+        toReview.feedbackReady = True
+        toReview.resubmissions_remaining -= 1
     toReview.save()
     return
 
